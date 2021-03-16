@@ -8,7 +8,8 @@
 namespace creocoder\flysystem;
 
 use Aws\S3\S3Client;
-use League\Flysystem\AwsS3v3\AwsS3Adapter;
+use League\Flysystem\AwsS3V3\AwsS3Adapter;
+use League\Flysystem\AwsS3V3\AwsS3V3Adapter;
 use yii\base\InvalidConfigException;
 
 /**
@@ -45,7 +46,7 @@ class AwsS3Filesystem extends Filesystem
     /**
      * @var string|null
      */
-    public $prefix;
+    public $prefix = '';
     /**
      * @var bool
      */
@@ -123,6 +124,6 @@ class AwsS3Filesystem extends Filesystem
 
         $client = new S3Client($config);
 
-        return new AwsS3Adapter($client, $this->bucket, $this->prefix, $this->options, $this->streamReads);
+        return new AwsS3V3Adapter($client, $this->bucket, $this->prefix, null, null, $this->options, $this->streamReads);
     }
 }
