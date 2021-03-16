@@ -59,7 +59,7 @@ abstract class Filesystem extends Component
     /**
      * @var \League\Flysystem\Config|array|string|null
      */
-    public $config;
+    public $config = [];
     /**
      * @var string|null
      */
